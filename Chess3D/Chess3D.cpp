@@ -5,16 +5,67 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Model cube = Model(8);
+	
+	cube.triangles[0].vertices[0] = Vertex();
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+struct Vertex 
+{
+	Vertex(float x, float y, float z, float r, float g, float b, float a, float nx, float ny, float nz)
+	{
+
+	}
+
+	//Position
+	
+	float x = 0;
+	float y = 0;
+	float z = 0;
+
+	//Colour
+
+	float r = 0;
+	float g = 0;
+	float b = 0;
+	float a = 0;
+
+	//Normals
+
+	float nx = 0; 
+	float ny = 0;
+	float nz = 0;
+};
+
+struct Triangle
+{
+	Vertex* vertices = NULL;
+
+	Triangle()
+	{
+
+	}
+
+	Triangle(Vertex v1, Vertex v2, Vertex v3)
+	{
+		
+	}
+
+
+	Vertex vertices[3] = {};
+};
+
+struct Model 
+{
+	Triangle* triangles = NULL;
+
+	Model(int numTriangles)
+	{
+		triangles = new Triangle[numTriangles];
+		for (int i = 0; i < numTriangles; i++)
+		{
+			*(triangles + i) = Triangle();
+		}
+	}
+};
